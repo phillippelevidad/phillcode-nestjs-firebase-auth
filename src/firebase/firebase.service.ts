@@ -21,6 +21,10 @@ export class FirebaseService {
       .catch(this.handleFirebaseAuthError)) as UserRecord;
   }
 
+  async setCustomUserClaims(uid: string, claims: Record<string, any>) {
+    return await firebaseAdmin.auth().setCustomUserClaims(uid, claims);
+  }
+
   async verifyIdToken(
     token: string,
     checkRevoked = false,
